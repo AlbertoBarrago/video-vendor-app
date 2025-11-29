@@ -1,0 +1,123 @@
+:root {
+  --bg-color: var(--tg-theme-bg-color, #ffffff);
+  --text-color: var(--tg-theme-text-color, #000000);
+  --hint-color: var(--tg-theme-hint-color, #999999);
+  --link-color: var(--tg-theme-link-color, #2481cc);
+  --button-color: var(--tg-theme-button-color, #2481cc);
+  --button-text-color: var(--tg-theme-button-text-color, #ffffff);
+  --secondary-bg-color: var(--tg-theme-secondary-bg-color, #f0f0f0);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Catalog */
+.catalog-header h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.video-item {
+  display: flex;
+  gap: 12px;
+  background-color: var(--secondary-bg-color);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.video-item:active {
+  opacity: 0.7;
+}
+
+.video-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.video-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.video-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+.price {
+  margin: 0;
+  color: var(--hint-color);
+  font-weight: 500;
+}
+
+/* Details */
+.video-details {
+  text-align: center;
+}
+
+.detail-thumb {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.detail-description {
+  color: var(--hint-color);
+  line-height: 1.5;
+}
+
+.detail-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Purchases */
+.view-purchases-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: var(--secondary-bg-color);
+  border: none;
+  border-radius: 8px;
+  color: var(--link-color);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.download-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
