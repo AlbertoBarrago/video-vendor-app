@@ -13,8 +13,9 @@ This is a Telegram mini app that allows users to purchase and download videos fr
 ## Installation
 
 1. Clone the repository
+ - Create the `.env` file for `BOT_TOKEN` and `MINI_APP_URL`
 2. Install dependencies
-3. Run the app
+3. Run the app `bun run dev`
 
 ## Usage
 
