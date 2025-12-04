@@ -4,8 +4,8 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const BOT_TOKEN = process.env.BOT_TOKEN;
-const MINI_APP_URL = process.env.MINI_APP_URL;
+const BOT_TOKEN = process.env.BOT_TOKEN ? process.env.BOT_TOKEN.trim() : null;
+const MINI_APP_URL = process.env.MINI_APP_URL ? process.env.MINI_APP_URL.trim() : null;
 const WEBHOOK_PATH = `/webhook/${BOT_TOKEN}`;
 const PORT = 3000;
 

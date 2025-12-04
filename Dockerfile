@@ -22,8 +22,6 @@ RUN bun install
 # Copia i file rimanenti (incluso il frontend, se necessario)
 COPY . .
 
-COPY src/utils/bot.js src/bot.js
-
 # Build application (esegue vite build e crea dist/)
 RUN bun run build
 
@@ -43,4 +41,4 @@ COPY --from=build /app /app
 EXPOSE 3000
 
 # Avvia il server webhook/statico
-CMD [ "bun", "src/bot.js" ]
+CMD [ "bun", "src/utils/bot.js" ]
