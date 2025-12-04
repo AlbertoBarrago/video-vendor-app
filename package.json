@@ -16,9 +16,13 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
+    "@types/node-telegram-bot-api": "^0.64.13",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "mongoose": "^8.2.0",
     "ngrok": "^3.3.0",
     "telegraf": "^4.16.3",
-    "express": "^4.18.2"
+    "telegram-webapps-types": "^1.0.5"
   }
 }

@@ -1,3 +1,8 @@
+/**
+ * Renders the video details
+ * @param container
+ * @param video
+ */
 export function renderVideoDetails(container, video) {
     container.innerHTML = `
     <div class="video-details">

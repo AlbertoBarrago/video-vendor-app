@@ -1,3 +1,8 @@
+/**
+ * Renders the purchases
+ * @param container
+ * @param purchases
+ */
 export function renderPurchases(container, purchases) {
 	if (purchases.length === 0) {
 		container.innerHTML = `

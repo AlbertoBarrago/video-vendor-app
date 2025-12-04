@@ -1,8 +1,12 @@
 import { Telegraf } from 'telegraf';
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
+import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
+
+dotenv.config();
 
 const BOT_TOKEN = process.env.BOT_TOKEN ? process.env.BOT_TOKEN.trim() : null;
 const MINI_APP_URL = process.env.MINI_APP_URL ? process.env.MINI_APP_URL.trim() : null;
@@ -19,8 +23,36 @@ if (!BOT_TOKEN || !MINI_APP_URL) {
     process.exit(1);
 }
 
+mongoose.connect(process.env.MONGO_URL, { dbName: 'marketBot' })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((err) => console.error('MongoDB connection error:', err));
+
+const productSchema = new mongoose.Schema({}, { strict: false });
+const Product = mongoose.model('Product', productSchema, 'products');
+
 const bot = new Telegraf(BOT_TOKEN);
 const app = express();
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+app.get('/api/products', async (req, res) => {
+    try {
+        const products = await Product.find({});
+        const transformed = products.map(p => {
+            const doc = p.toObject();
+            doc.id = doc._id.toString();
+            delete doc._id;
+            return doc;
+        });
+        res.json(transformed);
+    } catch (e) {
+        res.status(500).json({error: e.message});
+    }
+});
 
 app.use(bot.webhookCallback(WEBHOOK_PATH));
 

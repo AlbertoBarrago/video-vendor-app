@@ -1,6 +1,10 @@
-import { videos } from '../data/videos.js';
-
-export function renderCatalog(container, onVideoSelect) {
+/**
+ * Renders the catalog
+ * @param container
+ * @param videos
+ * @param onVideoSelect
+ */
+export function renderCatalog(container, videos, onVideoSelect, ) {
 	container.innerHTML = `
     <div class="catalog-header">
       <h2>Video Catalog</h2>
