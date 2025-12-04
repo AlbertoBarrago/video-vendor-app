@@ -1,11 +1,11 @@
 import './style.css';
 import {initTelegram, setMainButton, hideMainButton, tg} from './utils/telegram.js';
 import {renderCatalog} from './components/Catalog.js';
-import {renderVideoDetails} from './components/VideoDetails.js';
+import {renderVideoDetails} from './components/ProductDetails.js';
 import {renderPurchases} from './components/Purchases.js';
 
 let currentPage = 'catalog';
-let selectedVideo = null;
+let selectedProduct = null;
 let purchases = [];
 
 const app = document.querySelector('#app');
@@ -38,8 +38,8 @@ async function navigateTo(page, data = null) {
     switch (page) {
         case 'catalog':
             const products = await fetchProducts();
-            renderCatalog(app, products, (video) => {
-                selectedVideo = video;
+            renderCatalog(app, products, (product) => {
+                selectedProduct = product;
                 navigateTo('details');
             });
             if (purchases.length > 0) {
@@ -52,21 +52,21 @@ async function navigateTo(page, data = null) {
             break;
 
         case 'details':
-            if (selectedVideo) {
-                renderVideoDetails(app, selectedVideo);
+            if (selectedProduct) {
+                renderVideoDetails(app, selectedProduct);
 
-                const isPurchased = purchases.some(p => p.id === selectedVideo.id);
+                const isPurchased = purchases.some(p => p.id === selectedProduct.id);
 
                 if (isPurchased) {
                     setMainButton("Download Now", () => {
-                        alert(`Downloading ${selectedVideo.title}...`);
+                        alert(`Downloading ${selectedProduct.title}...`);
                     });
                 } else {
-                    setMainButton(`Buy for $${selectedVideo.price}`, () => {
+                    setMainButton(`Buy for $${selectedProduct.price}`, () => {
                         // Mock purchase
-                        tg.showConfirm(`Buy ${selectedVideo.title} for $${selectedVideo.price}?`, (confirmed) => {
+                        tg.showConfirm(`Buy ${selectedProduct.title} for $${selectedProduct.price}?`, (confirmed) => {
                             if (confirmed) {
-                                purchases.push(selectedVideo);
+                                purchases.push(selectedProduct);
                                 tg.showAlert("Purchase successful!");
                                 navigateTo('purchases');
                             }

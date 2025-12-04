@@ -1,5 +1,4 @@
-# *POC* Video vendor app for Telegram
+# *POC* Market Bot Application
 
-This is a Telegram mini app that allows users to purchase and download videos from a vendor.
-
+This is a POC for a market bot application.
 WORK IN PROGRESS...

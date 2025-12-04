@@ -1,21 +1,21 @@
 /**
  * Renders the catalog
  * @param container
- * @param videos
- * @param onVideoSelect
+ * @param products
+ * @param onProductSelect
  */
-export function renderCatalog(container, videos, onVideoSelect, ) {
+export function renderCatalog(container, products, onProductSelect, ) {
 	container.innerHTML = `
     <div class="catalog-header">
-      <h2>Video Catalog</h2>
+      <h2>Product Catalog</h2>
     </div>
-    <div class="video-list">
-      ${videos.map(video => `
-        <div class="video-item" data-id="${video.id}">
-          <img src="${video.thumbnail}" alt="${video.title}" class="video-thumb">
-          <div class="video-info">
-            <h3>${video.title}</h3>
-            <p class="price">$${video.price}</p>
+    <div class="product-list">
+      ${products.map(product => `
+        <div class="product-item" data-id="${product.id}">
+          <img src="${product.thumbnail}" alt="${product.title}" class="product-thumb">
+          <div class="product-info">
+            <h3>${product.title}</h3>
+            <p class="price">$${product.price}</p>
           </div>
         </div>
       `).join('')}
@@ -23,11 +23,11 @@ export function renderCatalog(container, videos, onVideoSelect, ) {
   `;
 
 	// Add event listeners
-	container.querySelectorAll('.video-item').forEach(item => {
+	container.querySelectorAll('.product-item').forEach(item => {
 		item.addEventListener('click', () => {
 			const id = parseInt(item.dataset.id);
-			const video = videos.find(v => v.id === id);
-			onVideoSelect(video);
+			const product = products.find(p => p.id === id);
+			onProductSelect(product);
 		});
 	});
 }
