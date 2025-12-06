@@ -1,4 +1,4 @@
-import './style.css';
+import '../style.css';
 import {initTelegram, setMainButton, hideMainButton, tg} from './utils/telegram.js';
 import {renderCatalog} from './components/Catalog.js';
 import {renderVideoDetails} from './components/ProductDetails.js';
@@ -9,7 +9,7 @@ let selectedProduct = null;
 let purchases = [];
 
 const app = document.querySelector('#app');
-const API_URL = import.meta.env.PROD ? 'https://market-bot-app-qs1elg.fly.dev' : 'http://localhost:3000';
+const API_URL = import.meta.env.PROD ? import.meta.env.VITE_MINI_APP_URL : 'http://localhost:3000';
 
 async function fetchProducts() {
     try {
@@ -86,7 +86,7 @@ initTelegram();
 
 tg.BackButton.onClick(() => {
     if (currentPage === 'details' || currentPage === 'purchases') {
-        navigateTo('catalog');
+        void navigateTo('catalog');
     }
 });
 
