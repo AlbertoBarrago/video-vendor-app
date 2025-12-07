@@ -1,4 +1,3 @@
-// Mock Telegram WebApp for non-Telegram browsers
 const mockTelegram = {
 	ready: () => {},
 	expand: () => {},

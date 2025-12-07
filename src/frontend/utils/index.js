@@ -10,7 +10,6 @@ let purchases = [];
 const app = document.querySelector('#app');
 const API_URL = import.meta.env.PROD ? 'https://market-bot-app-qs1elg.fly.dev' : 'http://localhost:3000';
 
-// Create back button for web browsers
 function createWebBackButton() {
     const existingBtn = document.querySelector('.web-back-btn');
     if (existingBtn) existingBtn.remove();
@@ -31,7 +30,6 @@ function removeWebBackButton() {
     if (existingBtn) existingBtn.remove();
 }
 
-// Create action button for web browsers
 function createWebActionButton(text, onClick) {
     const existingBtn = document.querySelector('.web-action-btn');
     if (existingBtn) existingBtn.remove();
