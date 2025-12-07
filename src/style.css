@@ -197,56 +197,142 @@ body {
   transform: scale(1.02);
 }
 
-/* Web browser navigation buttons */
 .web-back-btn {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  padding: 10px 20px;
-  background-color: var(--secondary-bg-color);
-  color: var(--text-color);
-  border: 1px solid var(--hint-color);
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  z-index: 1000;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 12px 24px;
+    background: var(--tg-theme-button-color, #2481cc);
+    color: var(--tg-theme-button-text-color, white);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
 }
 
 .web-back-btn:hover {
-  background-color: var(--button-color);
-  color: var(--button-text-color);
-  border-color: var(--button-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: var(--tg-theme-button-color, #1a6bb3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.web-back-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .web-action-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 16px 40px;
-  background-color: var(--button-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  z-index: 1000;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  min-width: 200px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 40px;
+    background: var(--tg-theme-button-color, #2481cc);
+    color: var(--tg-theme-button-text-color, white);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    min-width: 250px;
+    text-align: center;
 }
 
 .web-action-btn:hover {
-  transform: translateX(-50%) translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    background: var(--tg-theme-button-color, #1a6bb3);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
 .web-action-btn:active {
-  transform: translateX(-50%) translateY(-2px);
+    transform: translateX(-50%) translateY(0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.web-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.2s ease;
+}
+
+.web-modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.web-modal-content p {
+    margin: 0 0 24px 0;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+}
+
+.web-modal-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.web-modal-btn {
+    flex: 1;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.web-modal-btn.cancel {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.web-modal-btn.cancel:hover {
+    background: #d1d5db;
+}
+
+.web-modal-btn.confirm {
+    background: var(--tg-theme-button-color, #2481cc);
+    color: white;
+}
+
+.web-modal-btn.confirm:hover {
+    background: var(--tg-theme-button-color, #1a6bb3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
